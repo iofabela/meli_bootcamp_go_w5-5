@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/employee"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/employee"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -77,7 +77,7 @@ func TestCreateFailEmployee(t *testing.T) {
 
 	//Valida el codigo de respuesta
 	assert.Equal(t, 422, rr.Code)
-	
+
 	//Valida que el cuerpo de la respuesta sea correcto
 	err := json.Unmarshal(rr.Body.Bytes(), &resp)
 	assert.Nil(t, err)
@@ -292,7 +292,7 @@ func TestUpdateNonExistentEmployee(t *testing.T) {
 }
 
 func TestUpdateIDNonIntEmployee(t *testing.T) {
-	
+
 	r := createServerEmployee(&mocks.MockEmployeeService{
 		MockRepository: mocks.MockEmployeeRepository{
 			MockData: mocks.MockEmployees,
@@ -361,7 +361,7 @@ func TestDeleteOkEmployee(t *testing.T) {
 }
 
 func TestDeleteIDNonIntEmployee(t *testing.T) {
-	
+
 	r := createServerEmployee(&mocks.MockEmployeeService{
 		MockRepository: mocks.MockEmployeeRepository{
 			MockData: mocks.MockEmployees,
@@ -369,7 +369,7 @@ func TestDeleteIDNonIntEmployee(t *testing.T) {
 	})
 
 	resp := struct {
-		Code string `json:"code"`
+		Code    string `json:"code"`
 		Message string `json:"message"`
 	}{}
 

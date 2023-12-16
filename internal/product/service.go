@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
 )
 
 // Errors
@@ -31,32 +31,32 @@ func NewService(r Repository) Service {
 	}
 }
 
-//	Get all 'products'
+// Get all 'products'
 func (s *service) GetAll(ctx context.Context) ([]domain.Product, error) {
 	return s.repository.GetAll(ctx)
 }
 
-//	Get a 'product' with id
+// Get a 'product' with id
 func (s *service) Get(ctx context.Context, id int) (domain.Product, error) {
 	return s.repository.Get(ctx, id)
 }
 
-//	Check if a 'product' exist with 'productCode'
+// Check if a 'product' exist with 'productCode'
 func (s *service) Exists(ctx context.Context, productCode string) bool {
 	return s.repository.Exists(ctx, productCode)
 }
 
-//	Save a 'product'
+// Save a 'product'
 func (s *service) Save(ctx context.Context, p domain.Product) (int, error) {
 	return s.repository.Save(ctx, p)
 }
 
-//	Update a 'product'
+// Update a 'product'
 func (s *service) Update(ctx context.Context, p domain.Product) error {
 	return s.repository.Update(ctx, p)
 }
 
-//	Delete a 'product'
+// Delete a 'product'
 func (s *service) Delete(ctx context.Context, id int) error {
 	return s.repository.Delete(ctx, id)
 }

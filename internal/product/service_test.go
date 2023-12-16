@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -39,7 +39,7 @@ func TestCreateConflict(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-//	Test to find all data
+// Test to find all data
 func TestFindAll(t *testing.T) {
 	// act
 	data := mocks.MockListProducts
@@ -54,7 +54,7 @@ func TestFindAll(t *testing.T) {
 	assert.Nil(t, err)
 }
 
-//	Test to find a data with the ID
+// Test to find a data with the ID
 func TestFinByIdExistent(t *testing.T) {
 	// act
 	data := mocks.MockListProducts
@@ -71,7 +71,7 @@ func TestFinByIdExistent(t *testing.T) {
 	assert.Equal(t, idSelected, res.ID)
 }
 
-//	Test to check a non-existing data with the ID
+// Test to check a non-existing data with the ID
 func TestFinByIdNonExistent(t *testing.T) {
 	// act
 	data := mocks.MockListProducts

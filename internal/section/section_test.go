@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

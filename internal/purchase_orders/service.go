@@ -3,7 +3,7 @@ package purchaseOrder
 import (
 	"context"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
 )
 
 type Service interface {
@@ -15,7 +15,7 @@ type service struct {
 	repository Repository
 }
 
-//NewService receive a Repository structure and return a service interface
+// NewService receive a Repository structure and return a service interface
 func NewService(r Repository) Service {
 	return &service{
 		repository: r,

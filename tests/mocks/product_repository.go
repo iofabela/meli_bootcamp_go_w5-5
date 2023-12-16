@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
 )
 
 // MockListProducts ...
@@ -102,7 +102,7 @@ var MockProductNonExistent domain.Product = domain.Product{
 // MockDataEmptyProduct ...
 var MockDataEmptyProduct []domain.Product = []domain.Product{}
 
-//	CONSTANTS
+// CONSTANTS
 const ( //	ERRORS	 = messages
 	ProductNotFound  = "product with id: %d, not found"
 	FailReading      = "cant read database"

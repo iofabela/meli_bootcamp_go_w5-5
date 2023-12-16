@@ -3,7 +3,7 @@ package locality
 import (
 	"context"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
 )
 
 type Service interface {
@@ -25,22 +25,22 @@ func NewService(r Repository) Service {
 	}
 }
 
-//Save Locality
+// Save Locality
 func (s *service) SaveLocality(ctx context.Context, l domain.Locality) (int, error) {
 	return s.repository.SaveLocality(ctx, l)
 }
 
-//Validate Id
+// Validate Id
 func (s *service) IDExist(ctx context.Context, id int) bool {
 	return s.repository.IDExist(ctx, id)
 }
 
-//Report Seller For Id
+// Report Seller For Id
 func (s *service) SellerReport(ctx context.Context, id int) (domain.ReportSeller, error) {
 	return s.repository.SellerReport(ctx, id)
 }
 
-//Report Seller All
+// Report Seller All
 func (s *service) GetAllSellerReports(ctx context.Context) ([]domain.ReportSeller, error) {
 	return s.repository.GetAllSellerReports(ctx)
 }

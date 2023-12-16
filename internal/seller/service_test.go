@@ -4,13 +4,13 @@ import (
 	"context"
 	"testing"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 
 	"github.com/stretchr/testify/assert"
 )
 
-//test create ok
+// test create ok
 func TestCreateOkSeller(t *testing.T) {
 	//arrange
 	mockRepository := &mocks.MockSellerRepo{
@@ -27,7 +27,7 @@ func TestCreateOkSeller(t *testing.T) {
 	assert.Equal(t, mocks.MockNewSeller, mockRepository.MockSeller[2])
 }
 
-//test create with conflict
+// test create with conflict
 func TestCreateConflictSeller(t *testing.T) {
 	//arrange
 	mockRepository := &mocks.MockSellerRepo{
@@ -40,7 +40,7 @@ func TestCreateConflictSeller(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-//test find all sellers
+// test find all sellers
 func TestFindAllSeller(t *testing.T) {
 	//arrange
 	mockRepository := &mocks.MockSellerRepo{
@@ -55,7 +55,7 @@ func TestFindAllSeller(t *testing.T) {
 	assert.Equal(t, mockRepository.MockSeller, resp)
 }
 
-//test find by no existen seller
+// test find by no existen seller
 func TestFindByIdNonExistentSeller(t *testing.T) {
 	//arrange
 	mockRepository := &mocks.MockSellerRepo{

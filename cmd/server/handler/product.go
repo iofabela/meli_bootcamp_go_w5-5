@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/product"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/product"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 )
 
 // Product ... | Product struct for Service

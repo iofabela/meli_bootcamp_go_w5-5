@@ -7,9 +7,9 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/utils/queries"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/utils/queries"
 	"github.com/stretchr/testify/assert"
 )
 

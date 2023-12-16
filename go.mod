@@ -1,4 +1,4 @@
-module github.com/extmatperez/meli_bootcamp_go_w5-5
+module github.com/iofabela/meli_bootcamp_go_w5-5
 
 go 1.17
 

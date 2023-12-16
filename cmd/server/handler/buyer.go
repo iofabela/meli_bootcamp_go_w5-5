@@ -3,10 +3,10 @@ package handler
 import (
 	"strconv"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/buyer"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/buyer"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 )
 
 type requestBuyer struct {
@@ -30,15 +30,15 @@ func NewBuyer(b buyer.Service) *Buyer {
 	}
 }
 
-//Get Buyer by id
-//@Summary Get buyer by id
-//@Tags Buyer
-//@Description Get buyer indicating its id.
-//@Produce json
-//@Param id path string true "id"
-//@Success 200 {object} web.response
-//@Failed 404 {object} web.errorResponse
-//@Router /buyers/{id} [get]
+// Get Buyer by id
+// @Summary Get buyer by id
+// @Tags Buyer
+// @Description Get buyer indicating its id.
+// @Produce json
+// @Param id path string true "id"
+// @Success 200 {object} web.response
+// @Failed 404 {object} web.errorResponse
+// @Router /buyers/{id} [get]
 func (b *Buyer) Get() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -57,14 +57,14 @@ func (b *Buyer) Get() gin.HandlerFunc {
 	}
 }
 
-//List of Buyers
-//@Summary Obtain list of buyers.
-//@Tags Buyer
-//@description Get all buyers.
-//@Produce json
-//@Success 200 {object} web.response
-//@Failed 500 {object} web.errorResponse
-//@Router /buyers [get]
+// List of Buyers
+// @Summary Obtain list of buyers.
+// @Tags Buyer
+// @description Get all buyers.
+// @Produce json
+// @Success 200 {object} web.response
+// @Failed 500 {object} web.errorResponse
+// @Router /buyers [get]
 func (b *Buyer) GetAll() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -81,16 +81,16 @@ func (b *Buyer) GetAll() gin.HandlerFunc {
 	}
 }
 
-//Create a Buyer
-//@Summary Create a buyer in the list of them
-//@Tags Buyer
-//@description Create a buyer indicating its parameters.
-//@Accept json
-//@Produce json
-//@Param buyer body requestBuyer true "Create Buyer"
-//@Success 201 {object} web.response
-//@Failed 400 {object} web.errorResponse
-//@Router /buyers [post]
+// Create a Buyer
+// @Summary Create a buyer in the list of them
+// @Tags Buyer
+// @description Create a buyer indicating its parameters.
+// @Accept json
+// @Produce json
+// @Param buyer body requestBuyer true "Create Buyer"
+// @Success 201 {object} web.response
+// @Failed 400 {object} web.errorResponse
+// @Router /buyers [post]
 func (b *Buyer) Create() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -122,17 +122,17 @@ func (b *Buyer) Create() gin.HandlerFunc {
 	}
 }
 
-//Update Buyer Patch
-//@Summary Update by id
-//@Tags Buyer
-//@Description Update buyer modifying only name and lastname parameters.
-//@Accept json
-//@Produce json
-//@Param buyer body requestToUpdate true "Buyer to uptdate"
-//@Param id path string true "id"
-//@Success 200 {object} web.response
-//@Failed 404 {object} web.errorResponse
-//@Router /buyers/{id} [patch]
+// Update Buyer Patch
+// @Summary Update by id
+// @Tags Buyer
+// @Description Update buyer modifying only name and lastname parameters.
+// @Accept json
+// @Produce json
+// @Param buyer body requestToUpdate true "Buyer to uptdate"
+// @Param id path string true "id"
+// @Success 200 {object} web.response
+// @Failed 404 {object} web.errorResponse
+// @Router /buyers/{id} [patch]
 func (b *Buyer) Update() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -177,15 +177,15 @@ func (b *Buyer) Update() gin.HandlerFunc {
 	}
 }
 
-//Delete Buyer
-//@Summary Delete buyer by id
-//@Tags Buyer
-//@Description Delete buyer modifying indicating its id.
-//@Produce json
-//@Param id path string true "id"
-//@Success 204 {object} web.response
-//@Failed 404 {object} web.errorResponse
-//@Router /buyers/{id} [delete]
+// Delete Buyer
+// @Summary Delete buyer by id
+// @Tags Buyer
+// @Description Delete buyer modifying indicating its id.
+// @Produce json
+// @Param id path string true "id"
+// @Success 204 {object} web.response
+// @Failed 404 {object} web.errorResponse
+// @Router /buyers/{id} [delete]
 func (b *Buyer) Delete() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -206,15 +206,15 @@ func (b *Buyer) Delete() gin.HandlerFunc {
 	}
 }
 
-//Get Purchase Orders
-//@Summary Get Purchase Orders by id or Get All
-//@Tags Buyer
-//@Description Get purchase orders by id or get all non indicating an id.
-//@Produce json
-//@Param id query int false "Purchase Order Id"
-//@Success 200 {object} web.response
-//@Failed 404 {object} web.errorResponse
-//@Router /buyers/reportPurchaseOrders [get]
+// Get Purchase Orders
+// @Summary Get Purchase Orders by id or Get All
+// @Tags Buyer
+// @Description Get purchase orders by id or get all non indicating an id.
+// @Produce json
+// @Param id query int false "Purchase Order Id"
+// @Success 200 {object} web.response
+// @Failed 404 {object} web.errorResponse
+// @Router /buyers/reportPurchaseOrders [get]
 func (b *Buyer) PurchaseOrders() gin.HandlerFunc {
 	return func(c *gin.Context) {
 

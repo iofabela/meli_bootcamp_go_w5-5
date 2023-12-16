@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	product_batch "github.com/extmatperez/meli_bootcamp_go_w5-5/internal/product_batches"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	product_batch "github.com/iofabela/meli_bootcamp_go_w5-5/internal/product_batches"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 )
 
 var (

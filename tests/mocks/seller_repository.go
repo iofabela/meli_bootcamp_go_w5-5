@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
 )
 
 var MockListSellers []domain.Seller = []domain.Seller{
@@ -77,7 +77,7 @@ func (d *MockSellerRepo) GetAll(ctx context.Context) ([]domain.Seller, error) {
 	return d.MockSeller, nil
 }
 
-//Get
+// Get
 func (d *MockSellerRepo) Get(ctx context.Context, id int) (domain.Seller, error) {
 	for _, seller := range d.MockSeller {
 		if seller.ID == id {
@@ -96,7 +96,7 @@ func (d *MockSellerRepo) Exists(ctx context.Context, cid int) bool {
 	return false
 }
 
-//Save
+// Save
 func (d *MockSellerRepo) Save(ctx context.Context, s domain.Seller) (int, error) {
 	nId := len(d.MockSeller) + 1
 	s.ID = nId
@@ -108,7 +108,7 @@ func (d *MockSellerRepo) Save(ctx context.Context, s domain.Seller) (int, error)
 	return 0, fmt.Errorf("el Seller con cid %d ya existe", s.CID)
 }
 
-//Update
+// Update
 func (d *MockSellerRepo) Update(ctx context.Context, s domain.Seller) error {
 	for i, seller := range d.MockSeller {
 		if seller.ID == s.ID {
@@ -122,7 +122,7 @@ func (d *MockSellerRepo) Update(ctx context.Context, s domain.Seller) error {
 	return errors.New(SellerNotFound)
 }
 
-//Delete
+// Delete
 func (d *MockSellerRepo) Delete(ctx context.Context, id int) error {
 	for i, seller := range d.MockSeller {
 		if seller.ID == id {

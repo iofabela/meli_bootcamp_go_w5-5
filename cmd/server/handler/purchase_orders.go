@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	purchaseOrder "github.com/extmatperez/meli_bootcamp_go_w5-5/internal/purchase_orders"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	purchaseOrder "github.com/iofabela/meli_bootcamp_go_w5-5/internal/purchase_orders"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 )
 
 type requestPurchaseOrders struct {
@@ -26,16 +26,16 @@ func NewPurchaseOrder(po purchaseOrder.Service) *PurchaseOrder {
 	}
 }
 
-//Create a Purchase Order
-//@Summary Create a purchase order in the list of them
-//@Tags Purchase Order
-//@description Create a purchase order indicating its parameters.
-//@Accept json
-//@Produce json
-//@Param buyer body requestPurchaseOrders true "Create a Purchase Order"
-//@Success 201 {object} web.response
-//@Failed 400 {object} web.errorResponse
-//@Router /purchaseOrders [post]
+// Create a Purchase Order
+// @Summary Create a purchase order in the list of them
+// @Tags Purchase Order
+// @description Create a purchase order indicating its parameters.
+// @Accept json
+// @Produce json
+// @Param buyer body requestPurchaseOrders true "Create a Purchase Order"
+// @Success 201 {object} web.response
+// @Failed 400 {object} web.errorResponse
+// @Router /purchaseOrders [post]
 func (po *PurchaseOrder) Create() gin.HandlerFunc {
 	return func(c *gin.Context) {
 

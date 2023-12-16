@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	inboundorder "github.com/extmatperez/meli_bootcamp_go_w5-5/internal/inbound_order"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	inboundorder "github.com/iofabela/meli_bootcamp_go_w5-5/internal/inbound_order"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 )
 
 // InboundOrder structure
@@ -27,17 +27,17 @@ func NewInboundOrder(i inboundorder.Service) *InboundOrder {
 	}
 }
 
-//Create godoc
-//@Summary Create inboundOrder
-//@Tags InboundOrders
-//@Description Create inboundOrdes
-//@Accept json
-//@Produce json
-//@Param InboundOrders body postInboundOrder true "InboundOrders to store"
-//@Succes 201 {object} web.Response
-//@Failure 409 {object} web.errorResponse
-//@Failure 422 {object} web.errorResponse
-//@Router /inboundOrders [post]
+// Create godoc
+// @Summary Create inboundOrder
+// @Tags InboundOrders
+// @Description Create inboundOrdes
+// @Accept json
+// @Produce json
+// @Param InboundOrders body postInboundOrder true "InboundOrders to store"
+// @Succes 201 {object} web.Response
+// @Failure 409 {object} web.errorResponse
+// @Failure 422 {object} web.errorResponse
+// @Router /inboundOrders [post]
 func (i *InboundOrder) Create() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req postInboundOrder

@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/employee"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/pkg/web"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/employee"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/pkg/web"
 
 	"strconv"
 )
@@ -32,17 +32,17 @@ func NewEmployee(e employee.Service) *Employee {
 	}
 }
 
-//CreateEmployees godoc
-//@Summary Create employees
-//@Tags Employees
-//@Description Create employees
-//@Accept json
-//@Produce json
-//@Param Employees body postEmployee true "Employees to store"
-//@Succes 201 {object} web.Response
-//@Failure 409 {object} web.errorResponse
-//@Failure 422 {object} web.errorResponse
-//@Router /employees [post]
+// CreateEmployees godoc
+// @Summary Create employees
+// @Tags Employees
+// @Description Create employees
+// @Accept json
+// @Produce json
+// @Param Employees body postEmployee true "Employees to store"
+// @Succes 201 {object} web.Response
+// @Failure 409 {object} web.errorResponse
+// @Failure 422 {object} web.errorResponse
+// @Router /employees [post]
 func (e *Employee) Create() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req postEmployee
@@ -90,15 +90,15 @@ func (e *Employee) Create() gin.HandlerFunc {
 	}
 }
 
-//ListEmployees godoc
-//@Summary List employees
-//@Tags Employees
-//@Description get all employees
-//@Accept json
-//@Produce json
-//@Succes 200 {object} web.Response
-//@Failure 500 {object} web.errorResponse
-//@Router /employees [get]
+// ListEmployees godoc
+// @Summary List employees
+// @Tags Employees
+// @Description get all employees
+// @Accept json
+// @Produce json
+// @Succes 200 {object} web.Response
+// @Failure 500 {object} web.errorResponse
+// @Router /employees [get]
 func (e *Employee) GetAll() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		employees, err := e.employeeService.GetAll(c)
@@ -114,16 +114,16 @@ func (e *Employee) GetAll() gin.HandlerFunc {
 	}
 }
 
-//ListEmployee godoc
-//@Summary List employee by ID
-//@Tags Employees
-//@Description get employee by ID
-//@Produce json
-//@Param id path int true "employees id"
-//@Succes 200 {object} web.Response
-//@Failure 400 {object} web.errorResponse
-//@Failure 404 {object} web.errorResponse
-//@Router /employees/{id} [get]
+// ListEmployee godoc
+// @Summary List employee by ID
+// @Tags Employees
+// @Description get employee by ID
+// @Produce json
+// @Param id path int true "employees id"
+// @Succes 200 {object} web.Response
+// @Failure 400 {object} web.errorResponse
+// @Failure 404 {object} web.errorResponse
+// @Router /employees/{id} [get]
 func (e *Employee) Get() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))
@@ -175,19 +175,19 @@ func (e *Employee) GetInboundOrders() gin.HandlerFunc {
 	}
 }
 
-//ModifyEmployees godoc
-//@Summary Modify employees
-//@Tags Employees
-//@Description Modify employees by ID
-//@Accept json
-//@Produce json
-//@Param id path int true "employees id"
-//@Param employees body patchEmployee true "employees to update"
-//@Succes 200 {object} web.Response
-//@Failure 400 {object} web.errorResponse
-//@Failure 404 {object} web.errorResponse
-//@Failure 500 {object} web.errorResponse
-//@Router /employees/{id} [patch]
+// ModifyEmployees godoc
+// @Summary Modify employees
+// @Tags Employees
+// @Description Modify employees by ID
+// @Accept json
+// @Produce json
+// @Param id path int true "employees id"
+// @Param employees body patchEmployee true "employees to update"
+// @Succes 200 {object} web.Response
+// @Failure 400 {object} web.errorResponse
+// @Failure 404 {object} web.errorResponse
+// @Failure 500 {object} web.errorResponse
+// @Router /employees/{id} [patch]
 func (e *Employee) Update() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req patchEmployee
@@ -222,15 +222,15 @@ func (e *Employee) Update() gin.HandlerFunc {
 	}
 }
 
-//DeleteEmployees godoc
-//@Summary Delete employee by ID
-//@Tags Employees
-//@Description Delete employees by ID
-//@Param id path int true "employees id"
-//@Succes 204 {object} nil
-//@Failure 400 {object} web.errorResponse
-//@Failure 404 {object} web.errorResponse
-//@Router /employees/{id} [delete]
+// DeleteEmployees godoc
+// @Summary Delete employee by ID
+// @Tags Employees
+// @Description Delete employees by ID
+// @Param id path int true "employees id"
+// @Succes 204 {object} nil
+// @Failure 400 {object} web.errorResponse
+// @Failure 404 {object} web.errorResponse
+// @Router /employees/{id} [delete]
 func (e *Employee) Delete() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))

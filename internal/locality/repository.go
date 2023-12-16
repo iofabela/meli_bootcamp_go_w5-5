@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/utils/queries"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/utils/queries"
 )
 
 type Repository interface {
@@ -29,7 +29,7 @@ func NewRepository(db *sql.DB) Repository {
 	}
 }
 
-//Save Locality
+// Save Locality
 func (r *repository) SaveLocality(ctx context.Context, l domain.Locality) (int, error) {
 	if r.IDExist(ctx, l.ID) {
 		return 0, fmt.Errorf("locality with id %v already exists", l.ID)
@@ -73,14 +73,14 @@ func (r *repository) SaveLocality(ctx context.Context, l domain.Locality) (int, 
 	return int(id), nil
 }
 
-//Validate Id
+// Validate Id
 func (r *repository) IDExist(ctx context.Context, id int) bool {
 	row := r.db.QueryRowContext(ctx, queries.SelectIdLocality, id)
 	err := row.Scan(&id)
 	return err == nil
 }
 
-//Report Seller for Id
+// Report Seller for Id
 func (r *repository) SellerReport(ctx context.Context, id int) (domain.ReportSeller, error) {
 	stmt, err := r.db.PrepareContext(ctx, queries.LocalityGetSellerReportQuery)
 	if err != nil {
@@ -100,7 +100,7 @@ func (r *repository) SellerReport(ctx context.Context, id int) (domain.ReportSel
 	return lc, nil
 }
 
-//Report Seller All
+// Report Seller All
 func (r *repository) GetAllSellerReports(ctx context.Context) ([]domain.ReportSeller, error) {
 	stmt, err := r.db.PrepareContext(ctx, queries.LocalityGetAllSellerReportsQuery)
 	if err != nil {

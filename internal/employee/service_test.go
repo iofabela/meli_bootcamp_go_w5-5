@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -19,7 +19,7 @@ func createService() Service {
 func TestCreateOkEmployee(t *testing.T) {
 
 	s := createService()
-	
+
 	mocks.MockNewEmployee.ID = 4
 
 	ctx := context.TODO()
@@ -31,11 +31,11 @@ func TestCreateOkEmployee(t *testing.T) {
 }
 
 func TestCreateWithConflictEmployee(t *testing.T) {
-	
+
 	s := createService()
 
 	expectedErr := "El empleado ya existe"
-	
+
 	ctx := context.TODO()
 	res, err := s.Save(ctx, mocks.MockEmployees[0])
 
@@ -50,7 +50,7 @@ func TestFindAllEmployee(t *testing.T) {
 
 	ctx := context.TODO()
 	res, err := s.GetAll(ctx)
-	
+
 	//Sin error esperado
 	assert.Nil(t, err)
 	assert.Equal(t, mocks.MockEmployees, res)
@@ -93,7 +93,7 @@ func TestUpdateExistentEmployee(t *testing.T) {
 
 	ctx := context.TODO()
 	err := s.Update(ctx, mocks.MockUpdateEmployee)
-  	data, _ := s.GetAll(ctx)
+	data, _ := s.GetAll(ctx)
 
 	assert.Nil(t, err)
 	assert.Equal(t, data[1], mocks.MockUpdateEmployee)

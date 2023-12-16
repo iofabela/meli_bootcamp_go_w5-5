@@ -7,11 +7,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/domain"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/internal/seller"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests"
-	"github.com/extmatperez/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/gin-gonic/gin"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/domain"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/internal/seller"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests"
+	"github.com/iofabela/meli_bootcamp_go_w5-5/tests/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -39,7 +39,7 @@ func createBadJsonRequestSeller(method string, url string) (*http.Request, *http
 	return req, httptest.NewRecorder()
 }
 
-//Test Create Ok
+// Test Create Ok
 func TestCreateOkSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -63,7 +63,7 @@ func TestCreateOkSellerHandler(t *testing.T) {
 	assert.Equal(t, mocks.MockNewSeller, resp.Data)
 }
 
-//Create Bad Request
+// Create Bad Request
 func TestCreateBadRequestSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -87,7 +87,7 @@ func TestCreateBadRequestSellerHandler(t *testing.T) {
 
 }
 
-//Create Fail
+// Create Fail
 func TestCreateFaildSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -189,7 +189,7 @@ func TestFindAllSellerHandler(t *testing.T) {
 	assert.Equal(t, mocks.MockListSellers, objRes.Data)
 }
 
-//Find By Id No Existente
+// Find By Id No Existente
 func TestFindByIdNonExistentSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -241,7 +241,7 @@ func TestFindByIdExistentSellerHandler(t *testing.T) {
 	assert.Equal(t, sellerExistent, objRes.Data)
 }
 
-//Update Ok
+// Update Ok
 func TestUpdateOkSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -268,7 +268,7 @@ func TestUpdateOkSellerHandler(t *testing.T) {
 	assert.Equal(t, mocks.MockUpdateSeller, objRes.Data)
 }
 
-//Update No Existente
+// Update No Existente
 func TestUpdateNonExistentSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -357,7 +357,7 @@ func TestUpdateIDNonIntSellerHandler(t *testing.T) {
 	assert.Equal(t, "invalid id, must be integer", objRes.Message)
 }
 
-//Delete No existente
+// Delete No existente
 func TestDeleteNonExistentSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -383,7 +383,7 @@ func TestDeleteNonExistentSellerHandler(t *testing.T) {
 	assert.Equal(t, "no seller with the id was found 3", objRes.Message)
 }
 
-//Delete Ok
+// Delete Ok
 func TestDeleteOkSellerHandler(t *testing.T) {
 	//arrange
 	r := createServerSeller(&mocks.MockServiceSeller{
@@ -423,7 +423,6 @@ func TestDeleteIDNonIntSellerHandler(t *testing.T) {
 	assert.Equal(t, "bad_request", objRes.Code)
 	assert.Equal(t, "invalid id, must be integer", objRes.Message)
 }
-
 
 //////////
 
