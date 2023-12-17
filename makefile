@@ -43,3 +43,13 @@ build-database:
 rebuild-database-with-password:
 	@echo "MysqlRoot Passowrd (if don't have ignore): "; \
     curl -s https://raw.githubusercontent.com/bootcamp-go/bootcamps-scripts/main/meli_database.sh | bash  -s rebuild ${p}
+
+.PHONY: init-docsify
+init-docsify:
+	@docsify init ./docs/guide
+
+.PHONY: swagger
+swagger:
+	@swag init -g cmd/server/main.go
+	@rm -f docs/specs/swagger.yaml
+	@curl -X POST "https://converter.swagger.io/api/convert" -H "Accept:application/yaml" -H "Content-Type:application/yaml" --data-binary @docs/swagger.yaml >> docs/specs/swagger.yaml

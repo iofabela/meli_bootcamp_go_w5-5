@@ -1,0 +1,1388 @@
+openapi: 3.0.1
+info:
+  contact: {}
+servers:
+- url: /
+paths:
+  /buyers:
+    get:
+      tags:
+      - Buyer
+      summary: Obtain list of buyers.
+      description: Get all buyers.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+    post:
+      tags:
+      - Buyer
+      summary: Create a buyer in the list of them
+      description: Create a buyer indicating its parameters.
+      requestBody:
+        description: Create Buyer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.requestBuyer'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+      x-codegen-request-body-name: buyer
+  /buyers/{id}:
+    get:
+      tags:
+      - Buyer
+      summary: Get buyer by id
+      description: Get buyer indicating its id.
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+    delete:
+      tags:
+      - Buyer
+      summary: Delete buyer by id
+      description: Delete buyer modifying indicating its id.
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+    patch:
+      tags:
+      - Buyer
+      summary: Update by id
+      description: Update buyer modifying only name and lastname parameters.
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Buyer to uptdate
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.requestToUpdate'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+      x-codegen-request-body-name: buyer
+  /buyers/reportPurchaseOrders:
+    get:
+      tags:
+      - Buyer
+      summary: Get Purchase Orders by id or Get All
+      description: Get purchase orders by id or get all non indicating an id.
+      parameters:
+      - name: id
+        in: query
+        description: Purchase Order Id
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+  /carries:
+    post:
+      tags:
+      - Carries
+      summary: Create Carry
+      description: create Carries
+      requestBody:
+        description: Carry to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postRequestCarry'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: carry
+  /employees:
+    get:
+      tags:
+      - Employees
+      summary: List employees
+      description: get all employees
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    post:
+      tags:
+      - Employees
+      summary: Create employees
+      description: Create employees
+      requestBody:
+        description: Employees to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postEmployee'
+        required: true
+      responses:
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: Employees
+  /employees/{id}:
+    get:
+      tags:
+      - Employees
+      summary: List employee by ID
+      description: get employee by ID
+      parameters:
+      - name: id
+        in: path
+        description: employees id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    delete:
+      tags:
+      - Employees
+      summary: Delete employee by ID
+      description: Delete employees by ID
+      parameters:
+      - name: id
+        in: path
+        description: employees id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    patch:
+      tags:
+      - Employees
+      summary: Modify employees
+      description: Modify employees by ID
+      parameters:
+      - name: id
+        in: path
+        description: employees id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: employees to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.patchEmployee'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: employees
+  /inboundOrders:
+    post:
+      tags:
+      - InboundOrders
+      summary: Create inboundOrder
+      description: Create inboundOrdes
+      requestBody:
+        description: InboundOrders to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postInboundOrder'
+        required: true
+      responses:
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: InboundOrders
+  /localities:
+    post:
+      tags:
+      - Localities
+      summary: Create Locality
+      description: Create Locality
+      requestBody:
+        description: Locality to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.RequestLocalityPost'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: Locality
+  /localities/reportCarries:
+    get:
+      tags:
+      - Localities
+      summary: Get Report of Carries by Locality
+      description: Get Report of Carries by Locality
+      parameters:
+      - name: id
+        in: query
+        description: locality id
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+  /localities/reportSellers:
+    get:
+      tags:
+      - Localities
+      summary: Get Report of Sellers by Locality
+      description: Get Report of Sellers by Locality
+      parameters:
+      - name: id
+        in: query
+        description: locality id
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+  /productBatches/:
+    post:
+      tags:
+      - ProductBatch
+      summary: Create product batch
+      description: create a new product batch
+      requestBody:
+        description: New Batch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.requestBatches'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: Batch
+  /products:
+    get:
+      tags:
+      - Products
+      summary: List of all products from database
+      description: Get all products from database
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    post:
+      tags:
+      - Products
+      summary: Create a new Product with Service
+      description: Create a product for POST
+      requestBody:
+        description: Create a product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postReq'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: product
+  /products/{id}:
+    get:
+      tags:
+      - Products
+      summary: Get a product with ID
+      description: Get product information using ID
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    delete:
+      tags:
+      - Products
+      summary: Delete a Product with Service
+      description: Delete a product from database
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "204":
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    patch:
+      tags:
+      - Products
+      summary: Update a Product with Service
+      description: Update a product with the requirements required.
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Create a product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.patchReq'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: product
+  /purchaseOrders:
+    post:
+      tags:
+      - Purchase Order
+      summary: Create a purchase order in the list of them
+      description: Create a purchase order indicating its parameters.
+      requestBody:
+        description: Create a Purchase Order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.requestPurchaseOrders'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+      x-codegen-request-body-name: buyer
+  /sections:
+    get:
+      tags:
+      - Sections
+      summary: List sections
+      description: get all registered sections
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+  /sections/:
+    post:
+      tags:
+      - Sections
+      summary: Create section
+      description: create a new section
+      requestBody:
+        description: New section
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.request'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+      x-codegen-request-body-name: product
+  /sections/{id}:
+    get:
+      tags:
+      - Sections
+      summary: Get section
+      description: search a section given a valid id
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+    delete:
+      tags:
+      - Sections
+      summary: Delete section
+      description: delete a section given a valid id
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "204":
+          description: No Content
+          content: {}
+    patch:
+      tags:
+      - Sections
+      summary: Update Section
+      description: search a section given a valid id
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: New data for section
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/handler.request'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+      x-codegen-request-body-name: product
+  /sections/reportProducts:
+    get:
+      tags:
+      - Sections
+      summary: Get Product Reports
+      description: Get all products Reports
+      parameters:
+      - name: id
+        in: query
+        description: id
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+  /sellers:
+    get:
+      tags:
+      - Sellers
+      summary: Get all Sellers
+      description: get all Sellers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    post:
+      tags:
+      - Sellers
+      summary: Create Sellers
+      description: create Sellers
+      requestBody:
+        description: Sellers to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postSeller'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: Sellers
+  /sellers/{id}:
+    get:
+      tags:
+      - Sellers
+      summary: Get sellers by id
+      description: get sellers by id
+      parameters:
+      - name: id
+        in: path
+        description: sellers id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    delete:
+      tags:
+      - Sellers
+      summary: Delete Seller by id
+      description: delete Seller by id
+      parameters:
+      - name: id
+        in: path
+        description: Seller id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    patch:
+      tags:
+      - Sellers
+      summary: Update Sellers
+      description: update Sellers by id
+      parameters:
+      - name: id
+        in: path
+        description: sellers id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: sellers to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.patchSeller'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: sellers
+  /warehouses:
+    get:
+      tags:
+      - Warehouses
+      summary: Get all Warehouses
+      description: get all Warehouses
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    post:
+      tags:
+      - Warehouses
+      summary: Create Warehouses
+      description: create Warehouses
+      requestBody:
+        description: Warehouse to store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postRequestWH'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: warehouse
+  /warehouses/{id}:
+    get:
+      tags:
+      - Warehouses
+      summary: Get Warehouse by id
+      description: get warehouse by id
+      parameters:
+      - name: id
+        in: path
+        description: Warehouse id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    delete:
+      tags:
+      - Warehouses
+      summary: Delete Warehouse by id
+      description: delete warehouse by id
+      parameters:
+      - name: id
+        in: path
+        description: Warehouse id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+    patch:
+      tags:
+      - Warehouses
+      summary: Update Warehouses
+      description: update warehouses by id
+      parameters:
+      - name: id
+        in: path
+        description: Warehouse id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Warehouse to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.patchRequestWH'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.response'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/web.errorResponse'
+      x-codegen-request-body-name: warehouse
+components:
+  schemas:
+    handler.RequestLocalityPost:
+      required:
+      - country_name
+      - id
+      - locality_name
+      - province_name
+      type: object
+      properties:
+        country_name:
+          type: string
+        id:
+          type: integer
+        locality_name:
+          type: string
+        province_name:
+          type: string
+    handler.patchEmployee:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        warehouse_id:
+          type: integer
+    handler.patchReq:
+      type: object
+      properties:
+        description:
+          type: string
+        expiration_rate:
+          type: integer
+        freezing_rate:
+          type: integer
+        height:
+          type: number
+        length:
+          type: number
+        netweight:
+          type: number
+        product_code:
+          type: string
+        width:
+          type: number
+    handler.patchRequestWH:
+      type: object
+      properties:
+        address:
+          type: string
+        minimum_capacity:
+          type: integer
+        minimum_temperature:
+          type: integer
+        telephone:
+          type: string
+        warehouse_code:
+          type: string
+    handler.patchSeller:
+      type: object
+      properties:
+        address:
+          type: string
+        cid:
+          type: integer
+        company_name:
+          type: string
+        telephone:
+          type: string
+    handler.postEmployee:
+      type: object
+      properties:
+        card_number_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        warehouse_id:
+          type: integer
+    handler.postInboundOrder:
+      type: object
+      properties:
+        employee_id:
+          type: integer
+        order_date:
+          type: string
+        order_number:
+          type: string
+        product_batch_id:
+          type: integer
+        warehouse_id:
+          type: integer
+    handler.postReq:
+      type: object
+      properties:
+        description:
+          type: string
+        expiration_rate:
+          type: integer
+        freezing_rate:
+          type: integer
+        height:
+          type: number
+        length:
+          type: number
+        netweight:
+          type: number
+        product_code:
+          type: string
+        product_type_id:
+          type: integer
+        recommended_freezing_temperature:
+          type: number
+        seller_id:
+          type: integer
+        width:
+          type: number
+    handler.postRequestCarry:
+      required:
+      - cid
+      - locality_id
+      type: object
+      properties:
+        address:
+          type: string
+        cid:
+          type: string
+        company_name:
+          type: string
+        locality_id:
+          type: integer
+        telephone:
+          type: string
+    handler.postRequestWH:
+      type: object
+      properties:
+        address:
+          type: string
+        minimum_capacity:
+          type: integer
+        minimum_temperature:
+          type: integer
+        telephone:
+          type: string
+        warehouse_code:
+          type: string
+    handler.postSeller:
+      required:
+      - address
+      - cid
+      - company_name
+      - telephone
+      type: object
+      properties:
+        address:
+          type: string
+        cid:
+          type: integer
+        company_name:
+          type: string
+        telephone:
+          type: string
+    handler.request:
+      type: object
+      properties:
+        current_capacity:
+          type: integer
+        current_temperature:
+          type: integer
+        maximum_capacity:
+          type: integer
+        minimum_capacity:
+          type: integer
+        minimum_temperature:
+          type: integer
+        product_type_id:
+          type: integer
+        section_number:
+          type: integer
+        warehouse_id:
+          type: integer
+    handler.requestBatches:
+      type: object
+      properties:
+        batchNumber:
+          type: integer
+        currentQuantity:
+          type: integer
+        currentTemperature:
+          type: integer
+        dueDate:
+          type: string
+        initialQuantity:
+          type: integer
+        manufacturingDate:
+          type: string
+        manufacturingHour:
+          type: string
+        minumumTemperature:
+          type: integer
+        productId:
+          type: integer
+        sectionId:
+          type: integer
+    handler.requestBuyer:
+      required:
+      - card_number_id
+      - first_name
+      - last_name
+      type: object
+      properties:
+        card_number_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+    handler.requestPurchaseOrders:
+      required:
+      - buyer_id
+      - order_date
+      - order_number
+      - order_status_id
+      - product_record_id
+      - tracking_code
+      type: object
+      properties:
+        buyer_id:
+          type: integer
+        order_date:
+          type: string
+        order_number:
+          type: string
+        order_status_id:
+          type: integer
+        product_record_id:
+          type: integer
+        tracking_code:
+          type: string
+    handler.requestToUpdate:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+    web.errorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    web.response:
+      type: object
+      properties:
+        data:
+          type: object
+x-original-swagger-version: "2.0"

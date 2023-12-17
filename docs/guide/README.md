@@ -12,8 +12,11 @@ Specify the Go runtime version tag you desire in your `Dockerfile`. If in doubt,
 latest one given the [Go 1 compatibility guarantees](https://golang.org/doc/go1compat).
 
 ```docker
-FROM hub.furycloud.io/mercadolibre/go:1.21-mini
+FROM hub.furycloud.io/mercadolibre/go:1.17-mini
 ```
+
+> You can find all available image tags for your Dockerfile
+> [here](https://github.com/mercadolibre/fury_go-mini#supported-tags).
 
 ### Dependency Management
 
